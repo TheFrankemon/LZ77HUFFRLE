@@ -1,16 +1,20 @@
 var deflate = {
 	huff: null,
 	compress: function(s) {
+    console.log('======================================================================================================');
+    console.log('DeflateRLE(%s)=', s);
 		var first = lz77.compress(s);
+    console.log('LZ77:');
 		console.log(first);
+    console.log('Huffman:');
 		deflate.huff = new HuffmanEncoding(first);
 		deflate.huff.inspect_encoding();
 		var second = deflate.huff.encoded_string;
 		console.log(second);
+    console.log('RLE:');
 		var third = rle.compress(second);
 		console.log(third.join());
 		return third;
-		//return second;
 	},
 	decompress: function(s) {
 		var first = rle.decompress(s);
@@ -254,7 +258,7 @@ var rle = {
     	input.match(/(.)\1*/g).forEach(function(substr){ encoding.push([substr.length, substr[0]]) });
     	return encoding;
 	},
-	decompress: function decode_rle(encoded) {
+	decompress: function decode_rle(encodedStr) {
     	var output = "";
     	encoded.forEach(function(pair){ output += new Array(1+pair[0]).join(pair[1]) })
     	return output;
@@ -271,13 +275,13 @@ var cmprss = function() {
   var compressedText = deflate.compress(inputxt);
   console.log(compressedText);
   document.getElementById('res').innerHTML = compressedText.toString();
-  document.getElementById('xtra').innerHTML = "<br> Your welcome! ;) Now even the NSA with guess it";
+  document.getElementById('xtra').innerHTML = "<br> You're welcome! ;) Now even the NSA won't guess it";
 }
 
-var dcmprss = function() {
+/*var dcmprss = function() {
   var inputxt = document.getElementById('elInput').value;
   var decompressedText = deflate.decompress(inputxt);
   //console.log(document.getElementById('elInput').value);
   document.getElementById('res').innerHTML = decompressedText.toString();
-  document.getElementById('xtra').innerHTML = "<br> Your welcome! ;) Don't you dare telling anyone about it.";
-}
+  document.getElementById('xtra').innerHTML = "<br> You're welcome! ;) Don't you dare telling anyone about it.";
+}*/

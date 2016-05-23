@@ -53,7 +53,8 @@ div {
 }
 
 .bottom-half {
-  background-color: #E91E63;
+  /*background-color: #E91E63;*/
+  background-color: #2F1847;
   height: 50%;
   flex: 1;
 }
@@ -113,10 +114,18 @@ div {
   font-size: 20px;
   background: #00BA72;
   padding: 7px 1% 7px 1%;
+  display: none;
 }
 
 #swtch:hover {
   background: #51C8A2;
+}
+
+#res {
+  word-break: break-all;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  max-height: 100px;
 }
 
 label {
