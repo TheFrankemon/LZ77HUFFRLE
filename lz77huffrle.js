@@ -156,18 +156,15 @@ var rle = {
 //console.log(deflate.decompress(test));
 
 var cmprss = function() {
-  var inputxt = document.getElementById('elInput').value;
-  var deflate = new deflateRLE(inputxt);
-  var compressedText = deflate.encoded;
-  //console.log(compressedText);
-  document.getElementById('res').innerHTML = compressedText.toString();
-  document.getElementById('xtra').innerHTML = "<br> You're welcome! ;) Now even the NSA won't guess it";
+	var inputxt = document.getElementById('elInput').value;
+	if (inputxt != "") {
+		var deflate = new deflateRLE(inputxt);
+  		var compressedText = deflate.encoded;
+	  	//console.log(compressedText);
+  		document.getElementById('res').innerHTML = compressedText.toString();
+  		document.getElementById('xtra').innerHTML = "<br> You're welcome! ;) Now even the NSA won't guess it";
+	} else {
+  		document.getElementById('res').innerHTML = "";
+		document.getElementById('xtra').innerHTML = "<br> Really? You want to compress NOTHING?";
+	}
 }
-
-/*var dcmprss = function() {
-  var inputxt = document.getElementById('elInput').value;
-  var decompressedText = deflate.decompress(inputxt);
-  //console.log(document.getElementById('elInput').value);
-  document.getElementById('res').innerHTML = decompressedText.toString();
-  document.getElementById('xtra').innerHTML = "<br> You're welcome! ;) Don't you dare telling anyone about it.";
-}*/
