@@ -118,3 +118,8 @@ div {
 #swtch:hover {
   background: #E91E63;
 }
+
+label {
+	position: absolute;
+	bottom: 0; right: 0;
+}
